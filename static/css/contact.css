@@ -1,0 +1,67 @@
+h1{
+    color: #076a86 !important;
+    font-size: 50px !important;
+    font-weight: bolder !important;
+    -webkit-text-stroke-color: transparent !important;
+    -webkit-text-stroke-width: 5px !important;
+    padding: 5%;
+}
+
+.contact-body{
+    background-image: linear-gradient(rgba(0,0,0,0.315),rgba(0,0,0,0.623)),url('../images/berries.jpg') !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: inherit;
+    background-attachment: fixed;
+}
+
+.span-contact{
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 200px !important;
+    background: #222;
+    color: #ffff;
+    text-align: center;
+    padding: 7%;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.span-contact:hover{
+    color: #ffff;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.tel{
+    color: #ffff !important;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.tel:hover{
+    color: #06ffde !important;
+}
+.mal{
+    color: #ffff !important;
+    text-decoration: none;
+    transition:0.6s
+}
+
+.mal:hover{
+    color: #06ffde !important;
+}
+
+
+
+@media screen and (max-width:600px){
+    .span-contact{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:700px){
+    .span-contact{
+        width: 100%;
+    }
+}

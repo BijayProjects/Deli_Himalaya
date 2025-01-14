@@ -1,0 +1,67 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/Order.css' %}">
+{% endblock link %}
+
+
+    
+
+{% block content %}
+<div class="container-fluid py-5">
+        
+    <div class="table-responsive">
+        <table class="table text-center">
+            <thead class="thead" >
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col" >Customer Name</th>
+                    <th scope="col" >Phone No.</th>
+                    <th scope="col" >E-mail</th>
+                    <th scope="col" >Location</th>
+                    <th scope="col" >Quantity</th>
+                    <th scope="col" >Product Name</th>
+                    <th scope="col" >Product Price</th>
+                    <th scope="col" >Total</th>
+                    <th scope="col" >Action</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                {% for od in Od_lst reversed %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td> {{od.customerName}} </td>
+                    <td> {{od.phoneNumber}} </td>
+                    <td><a href="mailto:{{od.email}}" style="text-decoration: none; color: #085ddd;">{{od.email}} </a></td>
+                    <td> {{od.city}},{{od.region}},{{od.street_address}},{{od.zip_code}} </td>
+                    <td> {{od.quantity}} </td>
+                    <td> {{od.product_name}} </td>
+                    <td> NRs.{{od.product_price}} </td>
+                    <td> NRs.{{od.total}} </td>
+                    <td>
+                        <a href="{% url 'dl_order' od.id %}" class="delete-button" ><i class="fa fa-trash" ></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot class="tfooter" >
+                <tr>
+                    <th scope="col" >Customer Name</th>
+                    <th scope="col" >Phone No.</th>
+                    <th scope="col" >E-mail</th>
+                    <th scope="col" >Customer Name</th>
+                    <th scope="col" >Location</th>
+                    <th scope="col" >Quantity</th>
+                    <th scope="col" >Product Name</th>
+                    <th scope="col" >Product Price</th>
+                    <th scope="col" >Total</th>
+                    <th scope="col" >Action</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+    
+{% endblock content %}
+    
+    

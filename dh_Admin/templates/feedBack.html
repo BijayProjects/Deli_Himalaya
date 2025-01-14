@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+
+{% block link %}
+    <style>
+        .fd{
+            text-decoration: underline;
+            text-underline-offset: 5px;
+            padding: 1%;
+        }
+        .table tr,th, td{
+            border: 1px solid black;
+        }
+        .table tr td a{
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+        }
+        .table tr td a:hover{
+            transition: ease-in-out;
+            color: rgb(5, 27, 223);
+        }
+        
+    </style>
+{% endblock link %}
+    
+
+{% block content %}
+    <div class="container-fluid py-4">
+        <div class="wrapper">
+            <div class="table-responsive">
+                <h2 class="text-center fd" >Feed Back</h2>
+                <table class="table text-center">
+                    <tr>
+                        <th>SNo.</th>
+                        <th>Full Name</th>
+                        <th>E-mail</th>
+                        <th>Messages</th>
+                    </tr>
+                    {% for fd in feedback reversed %}
+                    <tr>
+                        <td> {{forloop.counter}} </td>
+                        <td> {{fd.fullname}} </td>
+                        <td> <a href="mailto:{{fd.email}} ">{{fd.email}} </a></td>
+                        <td style="text-wrap: wrap;"> {{fd.message}} </td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    {% block header %}
+
+    {% endblock header %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Style link -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+      {% comment %} This is the main js Animation of the webapp {% endcomment %}
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/fav-icon/dh-logo-fav.png' %}">
+    <link rel="icon" type="image/x-icon"  href="{% static 'images/logo/dh-logo.jpg' %}">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      ::-webkit-scrollbar{
+        background:gray;
+        width: 15px;
+        height: 15px;
+      }
+      ::-webkit-scrollbar-track{
+        border-radius:10px
+      }
+      ::-webkit-scrollbar-thumb{
+        background:#09b8a1;
+        border-radius:10px;
+        transition:0.5s;
+      }
+      ::-webkit-scrollbar-thumb:hover{
+        background:#077869;
+        border-radius:10px;
+      }
+
+    </style>
+    <title>
+        {% block title %}
+
+        {% endblock title %}
+    </title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}"><img class="logo" src="{% static 'images/logo/dh-logo.jpg' %}" height="100px"  alt="DH"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse new-navcoll" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'menu' %}">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>                
+                
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About Us</a>
+              </li>
+            </ul>            
+            <form class="d-flex justify-content-between" role="search" method="POST" action="{% url 'search' %}">
+              {% csrf_token %}
+              <input class="form-control me-2" name="search" type="search" placeholder="Search for Food" aria-label="Search" >
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+           <ul class="navbar-nav mb-2 mb-lg-0 justify-content-between sgn">
+                <li class="nav-item  justify-content-between">
+                    {% comment %} <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Account
+                    </a> {% endcomment %}
+                    <ul class="navbar-nav justify-content-between">
+                      {% if request.user.is_authenticated %}
+                      <li class='nav-item' ><a class="login_btn nav-link " href="{% url 'signout' %}">LogOut</a></li>
+                      <p> {{user.username}} </p>
+                      {% else %}
+                      <li class='nav-item' ><a class="login_btn nav-link " href="{% url 'signin' %}">LogIn</a></li>
+                      {% endif %}
+                                            
+                    </ul> 
+                     {% comment %} <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    </ul>       {% endcomment %}
+                  </li>  
+                                
+            </ul>
+          
+        </div>
+      </nav>
+      
+      {% block content %}
+
+      {% endblock content %}
+
+
+
+      <footer class="footer py-5">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-4 text-center">
+              <a href="{% url 'home' %}">
+                <h3><img src="{% static 'images/fav-icon/dh-logo-fav.jpg' %}" width="100px" alt=""></h3>
+              </a>
+              <p><h3>Visit Again</h3></p>
+              <p><h5>Address</h5></p>
+              <p><h6><Address>Lalitpur, Bhanimandal, PN 4563</Address></h6></p>
+            </div>
+
+            <div class="col-sm-4 text-center" >
+              <h3>Policy</h3>
+              <strong><a href="{% url  'contact' %}" style="text-decoration: none; color: #000000;">Contact</a></strong>
+              <p><a href="tel:9806158068 " style="color: #000000; text-decoration: none;">1234567890 </a>|| <a href="tel:9761764563" style="color: #000000; text-decoration: none;">0123456789</a></p>            
+              <div class="social-links text-center">                
+                  <span class="fa-stack fa-2x social-icon">
+                    <a  href="#" style="color: #000000;">
+                      <i class="fa fa-circle-thin fa-stack-2x"></i>
+                      <i class="fa fa-facebook fa-stack-1x" ></i>
+                    </a>
+                  </span>     
+
+              
+                <span class="fa-stack fa-2x social-icon">                  
+                  <a  href="#" style="color: #000000;">
+                    <i class="fa fa-circle-thin fa-stack-2x"></i>                  
+                    <i class="fa fa-twitter fa-stack-1x" ></i>
+                  </a>
+                </span>
+              
+
+              
+                <span class="fa-stack fa-2x social-icon">
+                  <a  href="#" style="color: #000000;" >
+                    <i class="fa fa-circle-thin fa-stack-2x"></i>
+                    <i class="fa fa-instagram fa-stack-1x" ></i>
+                  </a>
+                </span>          
+              </div>
+            </div>
+
+            <div class="col-sm-4 footer-links text-center" >
+              <a href="{% url 'menu' %}" style='color:#000000;' ><h3>Menu</h3></a>
+              <a href="{% url 'about' %}" style='color:#000000;' ><h3>About Us</h3></a>
+              <a href="{% url 'contact' %}" style='color:#000000;' ><h3>Contact Us</h3></a>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="container-fluid " style="border-top: 1px solid gray;">
+            <p class="py-2 text-center"> {{ddd.year}}    &copy;All Copyright reserve.DeliHimalaya. Product by Deli Himalaya </p>
+          </div>
+        </div>
+      </footer>
+       
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 100, // offset (in px) from the original trigger point
+        delay: 0, // values from 0 to 3000, with step 50ms
+        duration: 800, // values from 0 to 3000, with step 50ms
+        easing: 'ease', // default easing for AOS animations
+        once: false, // whether animation should happen only once - while scrolling down
+        
+      });
+    </script>
+
+</body>
+</html>

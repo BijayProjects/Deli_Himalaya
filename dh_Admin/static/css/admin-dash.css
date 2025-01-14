@@ -1,0 +1,15 @@
+.act{
+    background-color: rgb(0, 0, 71);
+    padding:0px 30%;
+    font-size: 20px;
+    color: #ffff !important;
+}
+
+.table-light tr th{
+    font-size: 23px;
+    background-color: #08171f !important;
+    color: #ffff;
+}
+.txt-center{ 
+    text-align: center;
+}

@@ -1,0 +1,63 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock header %}
+{% block title %}
+    About Us
+{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid about-container-body">
+    <div class="container py-5">
+        <div class="wrapper">
+            <h2 class="text-center about-title">About Us</h2>
+            <p class="about-par">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum beatae ipsa quidem ad cumque ut autem nostrum 
+                officia, tempore fugiat deserunt dignissimos quis in alias laborum tenetur soluta 
+                voluptate eius!,Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Non fugit commodi hic nemo, molestias illo vero delectus. Natus minima porro 
+                recusandae eum enim dolor? Maiores voluptates optio nihil 
+                possimus debitis?</p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-5 about-team-body">
+    <div class="container ">
+        <h2 class="about-title">Our Menbers</h2>
+        <div class="row">
+            <div class="col-sm-12 py-2">
+                <marquee class="marquee" loop="infinite" scrollamount="5" behavior="alternate" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                    <img class="team-img" src="{% static 'images/team-img/boy.jpg' %}" alt="">
+                    <img class="team-img" src="{% static 'images/girl_chefs.png' %}" alt="">
+                    <img class="team-img" src="{% static 'images/team-img/women1.jpg' %}" alt="">
+                    <img class="team-img" src="{% static 'images/team-img/women2.jpg' %}" alt="">
+                    <img class="team-img" src="{% static 'images/img_avatar.png' %}" alt="">
+                    
+                </marquee>
+                <marquee behavior="alternate" direction="right" onmouseover="this.stop();" onmouseout="this.start();">
+                    <img class="team-img" src="{% static 'images/team-img/women1.jpg' %}" alt="">
+                    <img class="team-img" src="{% static 'images/team-img/boy.jpg' %}" alt="">
+                    <img class="team-img" src="{% static 'images/girl_chefs.png' %}" alt="">
+                    <img class="team-img" src="{% static 'images/img_avatar.png' %}" alt="">
+                    <img class="team-img" src="{% static 'images/team-img/women2.jpg' %}" alt="">
+                    
+                </marquee>
+                <marquee class="marquee" loop="infinite" scrollamount="5" behavior="alternate" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                    <img class="team-img" src="{% static 'images/team-img/boy.jpg' %}" alt="">
+                    <img class="team-img" src="{% static 'images/img_avatar.png' %}" alt="">
+                    <img class="team-img" src="{% static 'images/girl_chefs.png' %}" alt="">
+                    <img class="team-img" src="{% static 'images/team-img/women2.jpg' %}" alt="">
+                    <img class="team-img" src="{% static 'images/team-img/women1.jpg' %}" alt="">
+                    
+                </marquee>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

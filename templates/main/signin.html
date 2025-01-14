@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/signin.css' %}">
+{% endblock header %}
+
+{% block title %}
+    Sign In
+{% endblock %}
+
+{% block content %}
+{% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Holy guacamole!</strong> {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+<div class="container">
+    <div class="form-container">
+        <p class="title">Sign In</p>
+        <form class="form" method="POST" action="{% url 'signin' %}">
+          {% csrf_token %}
+          <input type="text" class="input" placeholder="User Name" name="email" required>
+          <input type="password" class="input" placeholder="Password" name="password" required>
+          
+          <button class="form-btn">Log in</button>
+        </form>
+        <a href="{% url 'signup' %}" class="link-up">
+        <p class="sign-up-label">
+          Don't have an account?<span class="sign-up-link">Sign up</span>
+        </p>     
+        </a>
+          
+        </div>
+      </div>
+</div>
+
+{% endblock content %}

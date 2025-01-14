@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block header %}
+<!-- head element for the link -->
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock header %}
+<!-- Title element -->
+{% block title %}
+    Deli Menu
+{% endblock title %}
+
+<!-- Body Element start here -->
+{% block content %}
+
+<!--card -->
+<div class="container py-5">
+    <h1 class="text-center" style="font-weight: bold;">Our Menu</h1>
+</div>
+
+<div class="container">
+    <div class="wrapper">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">            
+            {% for pd in product %}
+                <div class="col-sm-4 py-3">
+                    <div class="card" data-aos='zoom-in-up'>
+                        <div class="img-thumbnail">
+                            <img src="{{pd.image.url}}" class=" menu-img" alt="">
+                        </div>
+                        <div class="price text-center ">Rs.{{pd.price}} </div>
+                        <div class="caption  text-center">
+                            <h5 class="card-title"> {{pd.product_name | upper}} </h5>
+                            <p class="card-text"> {{pd.description}} </p>
+                            <a href="{% url 'order' pd.id %}" class="btn button-order">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

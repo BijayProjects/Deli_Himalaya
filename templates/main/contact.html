@@ -1,0 +1,54 @@
+{% extends 'main/base.html' %}
+{% load static %}
+<!-- header for the css -->
+{% block header %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock header %}
+<!-- title -->
+{% block title %}
+    Contact
+{% endblock title %}
+
+<!-- body -->
+{% block content %}
+
+<div class="container py-5 Con">
+    <div class="row">
+        <div class="col text-center" >
+            <h1 class="h1">Contact Us</h1>
+            <img src="{% static 'images/QR_Code.png' %}" width="200px" height="200px">
+            <p>Scan QR Code for our Details</p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-5 contact-body">
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm-6 py-3 row-contact">
+                <div class="span-contact">
+                    <h3>Contact Us</h3>
+                    <a class="tel" href="tel:9856423578">9785459658 </a>| <a class="tel" href="tel:9856423578">9856423578</a> <br>
+                    <a class="mal" href="mailto:bijaytamang2310@gmail.com">bijaytamang2310@gmail.com</a>
+    
+                </div>           
+            </div>
+            <div class="col-sm-6 py-3">
+                <div class="span-contact">
+                    <h2>Times</h3>
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Opening</h4>
+                            <p>Monday - Friday</p>
+                            <p>8AM - 9PM</p>                        
+                        </div>
+                        <div class="col-6">
+                            <h4>Closing</h4>
+                            <p>Saturday - Sunday</p>                            
+                        </div>
+                    </div>
+                </div>           
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

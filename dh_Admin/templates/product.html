@@ -1,0 +1,53 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block link %}
+    <style>
+        .prot_add_btn{
+            display:flex;
+        }
+        #btn{
+            padding:0% 1%;
+        }
+
+    </style>
+{% endblock link %}
+    
+
+{% block content %}
+<div class="container-fluid py-5 product">
+    <div class="prot_add_btn"  >
+        <a href="{% url 'addpd' %}" id='btn' >
+            <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Add Product</button><br><br>
+        </a>
+    </div>
+    <table class="table txt-center">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">Images</th>
+                <th scope="col" >Product Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Delivery Charge</th>
+                <th scope="col">Active</th>
+              </tr>
+        </thead>
+        <tbody>
+            {% for products in pdt %}
+            <tr class="py-2">
+                <td><img class="images_prod" src="{{products.image.url}}" width="170px" height="120px" alt="" ></td>
+                <!-- <th> {{i.image}} </th> -->
+                <td style="font-weight: bolder;" class="text-center"><h3> {{products.product_name | upper}}</h3></td>
+                <td style="font-weight: bolder;" >Rs.{{products.price}} </td>
+                <td style="font-weight: bolder;" >Rs.{{products.delivery_charge}} </td>
+                <td>
+                    <a href="{% url 'edit_products' products.id %}"><button type="button" class="btn btn-outline-success">Edit</button></a>
+                    <a href="{% url 'product_delete' products.id %}"><button type="button" class="btn btn-outline-danger">Delete</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+      </table>
+    
+</div>
+{% endblock content %}

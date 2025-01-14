@@ -1,0 +1,63 @@
+{% extends 'base/base.html' %}
+
+{% block link %}
+    
+{% endblock link %}
+    
+{% block title %}
+    Dashboard
+{% endblock title %}
+
+{% block content %}
+
+<div class="container text-center py-5">
+    <h1>Welcome to the DashBoard</h1>
+    <p>Admin view point</p>
+    {% if messages %}
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    {% endif %}
+</div>
+<div class="container mt-2 mb-5 text-center ">
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <canvas id="myChart" style='height:200px'></canvas>
+                  </div>
+                  
+                  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                  
+                  <script>
+                    const ctx = document.getElementById('myChart');
+                  
+                    new Chart(ctx, {
+                      type: 'bar',
+                      data: {
+                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        datasets: [{
+                          label: '# Orders',
+                          data: [12, 19, 3, 5, 2, 3],
+                          borderWidth: 1
+                        }]
+                        
+                        
+                      },
+                      options: {
+                        scales: {
+                          y: {
+                            beginAtZero: true
+                          }
+                        }
+                      }
+                    });
+                  </script>
+                  
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

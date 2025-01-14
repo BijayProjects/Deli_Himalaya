@@ -1,0 +1,66 @@
+{% extends "base/base.html" %}
+
+{% block link %}
+    <style>
+        .wrapper{
+            display:grid;
+            justify-content:center;
+
+        }
+        form{
+            border:2px solid rgba(255, 255, 255, 1);
+            border-radius:16px;
+            box-shadow:0 4px 30px rgba(0, 0, 0, 0.1);
+            display:grid;
+            justify-content:center;
+            padding:5%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter:blur(5px);
+            -webkit-backdrop-fileter:blur(5px);
+        }
+    </style>
+{% endblock link %}
+    
+{% block title %}
+ +AddProd
+{% endblock title %}
+
+{% block content %}
+
+    <div class="container py-5">
+        <div class="wrapper py-5">
+            
+            <form action="{% url 'addpd' %}" method="POST" enctype='multipart/form-data' >
+                <h1 class='text-center' style='text-decoration:underline;'>Add Product</h1>
+
+                {% if messages %}
+                {% for message in messages %}
+                {{message}}
+                {% endfor %}
+                {% endif %}
+
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for=""></label>
+                    <input type="file" class="form-control" name="product-image" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder="Full Name">            
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Product Title:</label>
+                    <input type="text" class="form-control" name="product-title" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product Title" required>            
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">NRs.</span>
+                    <input type="number" class="form-control" name = 'product-price' placeholder="Product Price.." aria-label="Username">
+                    <span class="input-group-text">Delivery NRs.</span>
+                    <input type="number" class="form-control" name = 'delivery-charge' placeholder="Delivery Charge.." aria-label="Server">
+                </div>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Description" name="description" required id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Description:</label>
+                </div><br>                        
+                <button type="submit" class="btn btn-outline-success ">Add Product</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

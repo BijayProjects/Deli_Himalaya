@@ -1,0 +1,167 @@
+{% extends '../main/base.html' %}
+{% load static %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/orderCss/order.css' %}">
+
+{% endblock header %}
+
+{% block content %}
+
+<div class="container-fluid main-body">         
+  <div class="container">
+    <div class="row bdr">
+      <div class="col-sm-6 text-center justify-content-center py-5">
+        <div class="box0">
+          <h2 class="text-center py-5"><strong>ORDER DETAILS</strong></h2>
+        <hr>
+        <div class="container-fluid order-container-body">
+        <div class="container order-form-container mb-5">
+            
+          <form action="{% url 'order' ord.id %}" method="POST">
+            {% csrf_token %}
+  
+            <div class="input-group mb-4">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                <input type="text" placeholder="Full Name" name="fullname" class="form-control" required>
+            </div>
+            <div class="input-group mb-4">
+                <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                <input type="number"  placeholder="Phone No.." name="phoneNo" class="form-control" required>
+            </div>
+            <div class="input-group flex-nowrap mb-4">
+                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-envelope"></i></i></span>
+                <input type="email" class="form-control" name="email" placeholder="E-mail Address" id="exampleInputEmail1" aria-describedby="addon-wrapping" required>
+            </div>
+            <div class="input-group flex-nowrap mb-4">
+                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-location-arrow"></i></span>
+                <input type="text" class="form-control" name="city" placeholder="City" aria-label="address" aria-describedby="addon-wrapping" required>
+                <input type="text" class="form-control" name="region" placeholder="Region" aria-label="address" aria-describedby="addon-wrapping" required>
+              </div> 
+              <div class="input-group flex-nowrap mb-4">
+                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-location-arrow"></i></span>
+                <input type="text" class="form-control" name="street-address" placeholder="Street Address" aria-label="address" aria-describedby="addon-wrapping" required>
+                <input type="text" class="form-control" name="zip-code" placeholder="Postal/Zip Code" aria-label="address" aria-describedby="addon-wrapping" required>
+              </div> 
+              
+            </div>
+              
+            </div>
+          </div>
+        </div>                                   
+            <!-- checkout -->
+
+          <div class="container">
+            <div class="wrapper">
+              <div class="row">
+                <!-- order display start -->
+                <div class="col-sm-6 mb-4">
+                  <div class="box text-center">
+                    <h2>Your Order</h2>
+                    <div class="form">                      
+                      <label><img src="{{ord.image.url}}" alt=""></label><br><br>
+                      <label> <strong>{{ord.product_name}} </strong></label><br>
+                      <label>Rs.{{ord.price}}</label> <br>
+                      <label for="quantity">Quantity:</label>
+                      <input type="number" name='quantitys' class='input-form-order-qualtity'  id="quantity" value="1" min="1" required='required'><br><br>
+
+                    </div>
+                  </div>
+                </div>
+                <!-- order display end -->
+                 <!-- checkout start -->
+                <div class="col-sm-6 mb-5">
+                  <div class="card cart">
+                    <label class="title">CHECKOUT</label>
+                    <div class="steps">
+                      <div class="step">
+                        <!-- <div>
+                          <span>SHIPPING TO:</span>
+                          <p>583 HouseNo Bhanimandal,Jwakheal</p>
+                          <p>Lalitpur, Nepal</p>
+                        </div>
+                        <hr> -->
+                        <div>
+                          <span>PAYMENT METHOD</span>
+                          Cash On Delivery
+                        </div>
+                        <hr>
+                        
+                        <div class="payments">
+                          <span>PAYMENT</span>
+                          <div class="details">
+                            <span>Subtotal:</span>
+                            <span>Rs.<label for="price">{{ord.price}}</label><br>
+                              <input type="hidden" name='main_price'  id="price" value="{{total}}" min="1" readonly>
+                            </span>
+                            <span>Delivery Charge:</span>
+                            <span>Rs.{{ord.delivery_charge}} </span>                           
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                
+                  <div class="card checkout">
+                    <div class="footer"> 
+                      <span>
+                        <table>
+                          <tr>
+                            <td>Total: </td>
+                            <td>
+                              <input type="number" name='total_price' class='input-form-order'  id="total-price" value="{{total}}" readonly>
+                            </td>
+                          </tr>
+                        </table>
+                      </span>
+                      <input class="checkout-btn" type="submit" value="Order Now">
+                    </div>
+                  </div>
+                </div>
+                 <!-- checkout end -->
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+
+{% comment %} <script>
+  let fun =()=>{
+    let num1 = document.getElementById('num1').value;
+    let num2 = document.getElementById('num2').value;
+    num1=Number.parseInt(num1);
+    num2 = Number.parseInt(num2);
+    let total = num2*num1;
+    document.getElementById('result').innerHTML=total
+    console.log(total)
+  }
+</script> {% endcomment %}
+
+<script>
+  // Select the input fields
+  const priceInput = document.getElementById('price');
+  const quantityInput = document.getElementById('quantity');
+  const totalPriceInput = document.getElementById('total-price');
+  
+
+  // Function to calculate and update the total price
+  function updateTotalPrice() {
+      const pricePerItem = parseFloat(priceInput.value);
+      const quantity = parseInt(quantityInput.value);
+      if (quantity>1){
+      }
+      // Calculate total price
+      const totalPrice = pricePerItem * quantity;
+
+      // Update the total price input field
+      totalPriceInput.value = totalPrice.toFixed(2);
+  }
+
+  // Add event listeners for changes in the price and quantity inputs
+  priceInput.addEventListener('input', updateTotalPrice);
+  quantityInput.addEventListener('input', updateTotalPrice);
+
+
+</script>
+
+{% endblock content %}

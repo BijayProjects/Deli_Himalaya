@@ -1,0 +1,71 @@
+{% extends "base/base.html" %}
+
+{% block link %}
+    <style>
+        .wrapper{
+            display:grid;
+            justify-content:center;
+
+        }
+        form{
+            border:2px solid rgba(255, 255, 255, 1);
+            border-radius:16px;
+            box-shadow:0 4px 30px rgba(0, 0, 0, 0.1);
+            display:grid;
+            justify-content:center;
+            padding:5%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter:blur(5px);
+            -webkit-backdrop-fileter:blur(5px);
+        }
+    </style>
+{% endblock link %}
+    
+{% block title %}
+ Edit Product
+{% endblock title %}
+
+{% block content %}
+
+    <div class="container py-5">
+        <div class="gb">
+            <a href="{% url 'product' %}">
+                <button type="submit" class="btn btn-outline-primary "><i class="fa fa-arrow-left"></i></button>
+            </a>
+        </div>
+        <div class="wrapper py-5">
+            
+            <form action="{% url 'edit_products' show_Product.id %}  " method="POST" enctype='multipart/form-data' >
+                <h1 class='text-center' style='text-decoration:underline;'>Add Product</h1>
+
+                {% if messages %}
+                {% for message in messages %}
+                {{message}}
+                {% endfor %}
+                {% endif %}
+
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for=""></label>
+                    <input type="file" class="form-control" name="product-image" id="exampleInputEmail1" aria-describedby="emailHelp" value='{{delivery_charge.image.url}}'  required>            
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Product Title:</label>
+                    <input type="text" class="form-control" name="product-title" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product Title" value=' {{show_Product.product_name}} '  required>            
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">NRs.</span>
+                    <input type="text" class="form-control" name = 'product-price' placeholder="Product Price.." aria-label="price" value=' {{show_Product.price}} ' >
+                    <span class="input-group-text">Delivery NRs.</span>
+                    <input type="text" class="form-control" name = 'delivery-charge'  placeholder="Delivery Charge.." aria-label="Server" value=' {{show_Product.delivery_charge}} '>
+                </div>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Description"  name="description" required id="floatingTextarea2" style="height: 100px"> {{show_Product.description}}</textarea>
+                    <label for="floatingTextarea2">Description:</label>
+                </div><br>                       
+                <button type="submit" class="btn btn-outline-success ">Add Product</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

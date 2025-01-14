@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/signin.css' %}">
+{% endblock header %}
+{% block title %}
+    Sign Up
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="form-container">
+        <p class="title">Sign Up</p>
+        <form class="form" method="POST" action="{% url 'signup' %}">
+          {% csrf_token %}
+          <input type="text" class="input" placeholder="User Name" required name="username">
+          <input type="email" class="input" placeholder="Email" required name="email">
+          <!-- <input type="number" class="input" placeholder="Phone No..." required name="phone_no">
+          <input type="local-address" class="input" placeholder="Current Address" required name="address"> -->
+          <input type="password" class="input" placeholder="Password" required name="password">
+          <input type="password" class="input" placeholder="Confirm Password" required name="confirm-password">
+          <button class="form-btn">Log Up</button>
+        </form>
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Dear User</strong> {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+          
+        
+
+        <a href="{% url 'signin' %}" class="link-up">
+        <p class="sign-up-label">
+          Have an account?<span class="sign-up-link">Sign In</span>
+        </p>     
+        </a>      
+          
+        </div>
+      </div>
+</div>
+
+{% endblock content %}
