@@ -1,0 +1,40 @@
+.about-container-body{
+    background-color: #929292 !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.851),rgba(0,0,0,0.676)),url(../images/clock.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+.about-team-body{
+    background: #929292;
+}
+.about-title{
+    color: #e6e6e6 !important;
+    font-size: 46px !important;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.about-par{
+    color: #ffffff;
+    font-style: oblique;
+    font-family: sans-serif;
+    font-size: larger;
+    text-align: justify;
+
+}
+.team-img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    filter:grayscale(100%);
+    transition: 1s;
+    cursor:pointer;
+}
+.team-img:hover{
+    filter:grayscale(0%);
+}

@@ -1,5 +1,6 @@
 from django.urls import path
-from .import views
+from . import views
+from dhapp.models import Product, Category, Customer, CustomerOrder, Feedback
 urlpatterns=[
     path("",views.admin_login,name='admin_login'),
     path("dashboard/",views.dashboard,name='dashboard'),
@@ -14,4 +15,10 @@ urlpatterns=[
     path('account_profile/',views.manage_profile,name='m_profile'),
     path('change_password/', views.Password_change,name='change-password'),
     
+    # Django Admin Integration
+    path('custom-admin/products/', views.CustomAdminView.as_view(model=Product), name='custom_admin_products'),
+    path('custom-admin/categories/', views.CustomAdminView.as_view(model=Category), name='custom_admin_categories'),
+    path('custom-admin/customers/', views.CustomAdminView.as_view(model=Customer), name='custom_admin_customers'),
+    path('custom-admin/orders/', views.CustomAdminView.as_view(model=CustomerOrder), name='custom_admin_orders'),
+    path('custom-admin/feedback/', views.CustomAdminView.as_view(model=Feedback), name='custom_admin_feedback'),
 ]

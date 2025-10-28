@@ -1,0 +1,42 @@
+{% if user.is_staff %}
+<li class="nav-item dropdown">
+  <a
+    class="nav-link dropdown-toggle"
+    href="#"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Django Admin
+  </a>
+  <ul class="dropdown-menu">
+    <li>
+      <a class="dropdown-item" href="{% url 'custom_admin_products' %}"
+        >Products</a
+      >
+    </li>
+    <li>
+      <a class="dropdown-item" href="{% url 'custom_admin_categories' %}"
+        >Categories</a
+      >
+    </li>
+    <li>
+      <a class="dropdown-item" href="{% url 'custom_admin_customers' %}"
+        >Customers</a
+      >
+    </li>
+    <li>
+      <a class="dropdown-item" href="{% url 'custom_admin_orders' %}">Orders</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="{% url 'custom_admin_feedback' %}"
+        >Feedback</a
+      >
+    </li>
+    <li><hr class="dropdown-divider" /></li>
+    <li>
+      <a class="dropdown-item" href="/django-admin/">Django Admin Site</a>
+    </li>
+  </ul>
+</li>
+{% endif %}

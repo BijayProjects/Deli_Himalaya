@@ -1,11 +1,16 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate,login,logout,update_session_auth_hash
-from django.contrib import messages
-from dhapp.models import Product,CustomerOrder,Feedback,Category
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib import messages, admin
+from dhapp.models import Product, CustomerOrder, Feedback, Category
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponse
+from django.contrib.admin.sites import site
+from django.views.generic import ListView
+from django.utils.decorators import method_decorator
+from .mixins import AdminMixin
+from django.contrib.admin.options import get_content_type_for_model
 
 # Create your views here.
 
@@ -119,6 +124,29 @@ def Edit_Product(request,id):
 
 def manage_profile(request):
     return render(request, 'manage/account_manager.html')
+
+class CustomAdminView(AdminMixin, ListView):
+    template_name = 'admin/custom_admin.html'
+    
+    def get_queryset(self):
+        model = self.kwargs.get('model')
+        return site._registry[model].model.objects.all()
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        model = self.kwargs.get('model')
+        model_admin = site._registry[model]
+        
+        context.update({
+            'model_name': model._meta.verbose_name_plural,
+            'app_label': model._meta.app_label,
+            'list_display': model_admin.list_display,
+            'list_filter': getattr(model_admin, 'list_filter', []),
+            'search_fields': getattr(model_admin, 'search_fields', []),
+            'add_url': f'/django-admin/{model._meta.app_label}/{model._meta.model_name}/add/',
+            'changelist_url': f'/django-admin/{model._meta.app_label}/{model._meta.model_name}/',
+        })
+        return context
 
 def Password_change(request):
     try:

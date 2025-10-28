@@ -1,0 +1,11 @@
+.thead{
+    background: blue !important;
+}
+.edit-button{
+    color:#198503;
+    font-size:20px ;
+}
+.delete-button{
+    color: #ff0000;
+    font-size: 20px;
+}

@@ -1,0 +1,140 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.body{
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(80deg, #004ffa,#010125);
+  background-repeat: no-repeat;
+  animation: bg-change infinite;
+  transition: 1s;
+  animation-duration:4s ;
+}
+
+.form {
+  background-color: #fff;
+  display: block;
+  padding: 2rem;
+  max-width: 350px;
+  border-radius: 0.5rem;
+  box-shadow: -30px 9px 25px 10px rgba(8, 1, 49, 0.726), 10px 14px 18px 1px rgba(1, 199, 166, 0.685);
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
+
+}
+
+.form-title {
+  font-size:2rem;
+  font-weight: bolder;
+  text-align: center;
+  color: #000;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container input, .form button {
+  outline: none;
+  border: 1px solid #e5e7eb;
+  margin: 8px 0;
+}
+
+.input-container input {
+  background-color: #fff;
+  padding: 1rem;
+  padding-right: 3rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 300px;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.11);
+}
+
+.submit {
+  display: block;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: #4F46E5;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  
+}
+.submit:hover{
+  transition: .6s;
+  display: block;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: #0d0b2e;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+}
+.submit:active{
+  transform: scale(.9);
+}
+
+.signup-link {
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.signup-link a {
+  text-decoration: underline;
+}
+/* 
+@keyframes bg-change {
+  100%{
+    background-image: linear-gradient(180deg, #0855fc,#030250);
+    
+  }
+  60%{
+
+    background-image: linear-gradient(#0855fc,#030250);
+  
+  }
+  20%{
+
+    background-image: linear-gradient(100deg, #0855fc,#030250);
+  }
+  10%{
+
+    background-image: linear-gradient(70deg, #0855fc,#030250);
+  }
+  5%{
+
+    background-image: linear-gradient(50deg, #0855fc,#030250);
+  }
+  0%{
+
+    background-image: linear-gradient(20deg, #0855fc,#030250);
+  }
+} */
+
+@media screen and (max-width:300px){
+
+  .input-container input {
+  background-color: #ffffff;
+  width: 200px;    
+}
+}

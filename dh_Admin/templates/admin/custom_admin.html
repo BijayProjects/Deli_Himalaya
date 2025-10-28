@@ -1,0 +1,53 @@
+{% extends "base/base.html" %} {% load static %} {% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">{{ model_name }}</h3>
+          <div class="card-tools">
+            <a href="{{ add_url }}" class="btn btn-primary"
+              >Add {{ model_name|title }}</a
+            >
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  {% for field in list_display %}
+                  <th>{{ field|title }}</th>
+                  {% endfor %}
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for object in object_list %}
+                <tr>
+                  {% for field in list_display %}
+                  <td>{{ object|getattr:field }}</td>
+                  {% endfor %}
+                  <td>
+                    <a
+                      href="/django-admin/{{ app_label }}/{{ object|lower }}/{{ object.pk }}/change/"
+                      class="btn btn-sm btn-info"
+                      >Edit</a
+                    >
+                    <a
+                      href="/django-admin/{{ app_label }}/{{ object|lower }}/{{ object.pk }}/delete/"
+                      class="btn btn-sm btn-danger"
+                      >Delete</a
+                    >
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
